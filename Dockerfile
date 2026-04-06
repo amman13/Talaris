@@ -33,7 +33,7 @@ RUN git init && \
     git tag v0.1.0 && \
     export PATH=$PATH:$GOPATH/bin && \
     mage build:clean && \
-    mage release:xgo "${TARGETOS}/${TARGETARCH}/${TARGETVARIANT}"
+   TAGS="prod" mage release:xgo "${TARGETOS}/${TARGETARCH}/${TARGETVARIANT}"
 
 #  ┬─┐┬ ┐┌┐┐┌┐┐┬─┐┬─┐
 #  │┬┘│ │││││││├─ │┬┘
