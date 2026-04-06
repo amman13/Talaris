@@ -28,7 +28,7 @@ ENV RELEASE_VERSION=$RELEASE_VERSION
 ENV GOPROXY=https://goproxy.kolaente.de
 RUN export PATH=$PATH:$GOPATH/bin && \
 	mage build:clean && \
-    DRONE_TAG=v0.1.0 mage release:xgo "${TARGETOS}/${TARGETARCH}/${TARGETVARIANT}"
+    RELEASE_VERSION=v0.1.0 mage release:xgo "${TARGETOS}/${TARGETARCH}/${TARGETVARIANT}"
 
 #  ┬─┐┬ ┐┌┐┐┌┐┐┬─┐┬─┐
 #  │┬┘│ │││││││├─ │┬┘
