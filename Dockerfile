@@ -26,7 +26,10 @@ ARG TARGETOS TARGETARCH TARGETVARIANT RELEASE_VERSION
 ENV RELEASE_VERSION=$RELEASE_VERSION
 
 ENV GOPROXY=https://goproxy.kolaente.de
-RUN git init && git commit --allow-empty -m "init" && \
+RUN git init && \
+    git config user.email "build@talaris.app" && \
+    git config user.name "Build" && \
+    git commit --allow-empty -m "init" && \
     git tag v0.1.0 && \
     export PATH=$PATH:$GOPATH/bin && \
     mage build:clean && \
