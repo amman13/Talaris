@@ -31,9 +31,11 @@ RUN git init && \
     git config user.name "Build" && \
     git commit --allow-empty -m "init" && \
     git tag v0.1.0 && \
-    export PATH=$PATH:$GOPATH/bin && \
+    export PATH=/freebsdcross/x86_64-pc-freebsd13/bin:/osxcross/target/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/go/bin && \
+    find . -name "*_test.go" -delete && \
+    find . -name "test.go" -delete && \
     mage build:clean && \
-   TAGS="prod" mage release:xgo "${TARGETOS}/${TARGETARCH}/${TARGETVARIANT}"
+    mage release:xgo "${TARGETOS}/${TARGETARCH}/${TARGETVARIANT}"
 
 #  ┬─┐┬ ┐┌┐┐┌┐┐┬─┐┬─┐
 #  │┬┘│ │││││││├─ │┬┘
