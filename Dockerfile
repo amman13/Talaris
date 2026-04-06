@@ -26,9 +26,11 @@ ARG TARGETOS TARGETARCH TARGETVARIANT RELEASE_VERSION
 ENV RELEASE_VERSION=$RELEASE_VERSION
 
 ENV GOPROXY=https://goproxy.kolaente.de
-RUN export PATH=$PATH:$GOPATH/bin && \
-	mage build:clean && \
-    RELEASE_VERSION=v0.1.0 mage release:xgo "${TARGETOS}/${TARGETARCH}/${TARGETVARIANT}"
+RUN git init && git commit --allow-empty -m "init" && \
+    git tag v0.1.0 && \
+    export PATH=$PATH:$GOPATH/bin && \
+    mage build:clean && \
+    mage release:xgo "${TARGETOS}/${TARGETARCH}/${TARGETVARIANT}"
 
 #  ┬─┐┬ ┐┌┐┐┌┐┐┬─┐┬─┐
 #  │┬┘│ │││││││├─ │┬┘
