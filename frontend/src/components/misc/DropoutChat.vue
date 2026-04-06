@@ -76,7 +76,7 @@ import BaseButton from '@/components/base/BaseButton.vue'
 
 import axios from 'axios'
 import { cleanHtmlText, extractTextContent } from './text_cleaner.js'
-import { OPENAI_API_KEY } from '../../open-ai.config.js'
+import { OPENAI_API_KEY } from './open-ai.config.js'
 import { system_prompt, other_pages_prompt, additional_other_pages_prompt } from './DropoutChat.config.js'
 
 const route = useRoute()
