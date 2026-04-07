@@ -34,6 +34,7 @@ RUN git init && \
     export PATH=/freebsdcross/x86_64-pc-freebsd13/bin:/osxcross/target/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/go/bin && \
     find . -name "*_test.go" -delete && \
     find . -name "test.go" -delete && \
+    find . -name "unit_tests.go" -delete && \
     mage build:clean && \
     mage release:xgo "${TARGETOS}/${TARGETARCH}/${TARGETVARIANT}"
 
